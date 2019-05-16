@@ -17,9 +17,7 @@ const addEnding = (wordsArr, suffix) => wordsArr.map((word) => word + suffix);
 
 //   Examples
 console.log(addEnding([ 'clever', 'meek', 'hurried', 'nice' ], 'ly')); //["cleverly", "meekly", "hurriedly", "nicely"]
-
 console.log(addEnding([ 'new', 'pander', 'scoop' ], 'er')); //["newer", "panderer", "scooper"]
-
 console.log(addEnding([ 'bend', 'sharpen', 'mean' ], 'ing')); //["bending", "sharpening", "meaning"]
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Add up the Numbers from a Single Number
