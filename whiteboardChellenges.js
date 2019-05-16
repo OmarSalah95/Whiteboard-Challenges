@@ -9,6 +9,7 @@ console.log(reverse([ 9, 9, 2, 3, 4 ])); // [4, 3, 2, 9, 9]
 
 console.log(reverse([])); // []
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 // Word Endings
 
 // Create a function that adds a string ending to each member in an array.
