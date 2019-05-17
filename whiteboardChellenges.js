@@ -20,6 +20,63 @@ console.log(addEnding([ 'clever', 'meek', 'hurried', 'nice' ], 'ly')); //["cleve
 console.log(addEnding([ 'new', 'pander', 'scoop' ], 'er')); //["newer", "panderer", "scooper"]
 console.log(addEnding([ 'bend', 'sharpen', 'mean' ], 'ing')); //["bending", "sharpening", "meaning"]
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Secret Society
+
+// A group of friends have decided to start a secret society.The name will be the first letter of each of their names, sorted in alphabetical order.
+
+// Create a function that takes in an array of names and returns the name of the secret society.
+// Notes
+
+// The secret society's name should be entirely uppercased.
+
+const societyName = (friends) => friends.map((friend) => friend[0]).sort().join('');
+// 	Examples
+
+console.log(societyName([ 'Adam', 'Sarah', 'Malcolm' ])); // "AMS"
+
+console.log(societyName([ 'Harry', 'Newt', 'Luna', 'Cho' ])); // "CHLN"
+
+console.log(societyName([ 'Phoebe', 'Chandler', 'Rachel', 'Ross', 'Monica', 'Joey' ])); // "CJMPRR"
+// Sort Words by a String
+
+// Create a function that sorts words by a given string.
+// Notes
+
+// The string may have excess letters(see examples #1 and #2).
+// There will be unique starting letters in each array.
+const sortByString = (arr, str) => arr.sort(([ a ], [ b ]) => str.indexOf(a) - str.indexOf(b));
+
+// 	Examples
+
+console.log(sortByString([ 'apple', 'banana', 'cherry', 'date' ], 'dbca'));
+//["date", "banana", "cherry", "apple"]
+
+console.log(sortByString([ 'small', 'big', 'medium' ], 'sazymtb'));
+//["small", "medium", "big"]
+
+console.log(sortByString([ 'poof', 'floof', 'loop' ], 'flatp'));
+//["floof", "loop", "poof"]
+
+// Hitting the Jackpot
+
+// Create a function that takes in an array(slot machine outcome) and returns true if all elements in the array are identical, and false otherwise.The array will contain 4 elements.
+// Notes
+
+// The elements must be exactly identical for there to be a jackpot.
+const testJackpot = (result) => !result.map((wheel) => wheel === result[0]).includes(false);
+// 	Examples
+
+console.log(testJackpot([ '@', '@', '@', '@' ])); // true
+
+console.log(testJackpot([ 'abc', 'abc', 'abc', 'abc' ])); // true
+
+console.log(testJackpot([ 'SS', 'SS', 'SS', 'SS' ])); // true
+
+console.log(testJackpot([ '&&', '&', '&&&', '&&&&' ])); // false
+
+console.log(testJackpot([ 'SS', 'SS', 'SS', 'Ss' ])); // false
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Add up the Numbers from a Single Number
 
 // Create a function that takes a number as an argument.Add up all the numbers from 1 to the number you passed to the function.For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
