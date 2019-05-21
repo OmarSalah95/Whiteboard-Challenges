@@ -230,4 +230,70 @@ console.log(
 ); // [1, "2", 3, 4, "five", "six", true, { prop: "val" }]
 console.log(flattenArray([ 1, 2, [ 3, [ 4, 5 ], 6 ], 7, 8 ])); // [1, 2, 3, 4, 5, 6, 7, 8]
 console.log(flattenArray()); // []
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Reverse the Case
+
+// Given a string, create a function to reverse the case.All lower - cased letters should be upper - cased, and vice versa.
+// 	Examples
+const reverseCase = (str) =>
+	str.replace(/[^\.]/g, (letter) => (letter === letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()));
+// str
+// 	.split('')
+// 	.map((letter) => (letter === letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()))
+// 	.join('');
+
+console.log(reverseCase('Happy Birthday')); //  "hAPPY bIRTHDAY"
+
+console.log(reverseCase('MANY THANKS')); //  "many thanks"
+
+console.log(reverseCase('sPoNtAnEoUs')); //  "SpOnTaNeOuS"
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Find the Shortest Word(s) in a Sentence
+
+// Create a function that accepts a string as an argument.Find its shortest word(s) and return them as an array sorted alphabetically(if there are multiple shortest words).
+// Rules
+
+// Periods, commas and other special characters don't count as part of a word's length.
+// Return words in lowercase only.
+// Sort words alphabetically.
+
+// Notes
+
+// Remember to sort the array of words alphabetically before returning your result.
+const findShortestWords = (str) => {
+	let arr = str.toLowerCase().replace(/[^a-z\s]/g, '').split(/\s+/);
+	let lowest = Math.min(...arr.map((x) => x.length));
+	return arr.filter((x) => x.length === lowest).sort();
+};
+// 	Examples
+
+console.log(findShortestWords('The quick brown fox jumped over the lazy dogs back.')); // ["fox", "the", "the"]
+
+console.log(findShortestWords('I think the solution is fairly obvious.')); // ["i"]
+
+console.log(findShortestWords('Chase two rabbits, catch none.')); // ["two"]
+
+console.log(findShortestWords('We become what we think about.')); // ["we", "we"]
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Is Johnny Making Progress ?
+
+// 	To train for an upcoming marathon, Johnny goes on one long - distance run each Saturday.He wants to track how often the number of miles he runs this Saturday exceeds the number of miles run the previous Saturday.This is called a progress day.
+
+// Create a function that takes in an array of miles run every Saturday and returns Johnny's total number of progress days.
+// Notes
+
+// Running the same number of miles as last week does not count as a progress day.
+// Examples
+const progressDays = (runs) => runs.filter((e, i, a) => e < a[i + 1]).length;
+
+console.log(progressDays([ 3, 4, 1, 2 ])); // 2
+// There are two progress days, (3->4) and (1->2)
+
+console.log(progressDays([ 10, 11, 12, 9, 10 ])); // 3
+
+console.log(progressDays([ 6, 5, 4, 3, 2, 9 ])); // 1
+
+console.log(progressDays([ 9, 9 ])); // 0
