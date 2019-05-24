@@ -7,6 +7,7 @@ def reverse(lst): return lst[::-1]
 
 
 # Examples
+print("exercise 1")
 print(reverse([1, 2, 3, 4]))  # [4, 3, 2, 1]
 print(reverse([9, 9, 2, 3, 4]))  # [4, 3, 2, 9, 9]
 print(reverse([]))  # []
@@ -20,14 +21,12 @@ def addEnding(lst, ending): return [word + ending for word in lst]
 
 
 # Examples
-print("exercise 1")
-# ["cleverly", "meekly", "hurriedly", "nicely"]
-print(addEnding(['clever', 'meek', 'hurried', 'nice'], 'ly'))
-# ["newer", "panderer", "scooper"]
-print(addEnding(['new', 'pander', 'scoop'], 'er'))
-# ["bending", "sharpening", "meaning"]
-print(addEnding(['bend', 'sharpen', 'mean'], 'ing'))
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+print("exercise 2")
+
+print(addEnding(['clever', 'meek', 'hurried', 'nice'], 'ly'))# ["cleverly", "meekly", "hurriedly", "nicely"]"]
+print(addEnding(['new', 'pander', 'scoop'], 'er'))# ["newer", "panderer", "scooper"]
+print(addEnding(['bend', 'sharpen', 'mean'], 'ing'))# ["bending", "sharpening", "meaning"]
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # A group of friends have decided to start a secret society.The name will be the first letter of each of their names, sorted in alphabetical order.
 
 # Create a function that takes in an array of names and returns the name of the secret society.
@@ -35,16 +34,14 @@ print(addEnding(['bend', 'sharpen', 'mean'], 'ing'))
 
 # The secret society's name should be entirely uppercased.
 
-
 def societyName(friends):
     ssName = ""
     for friend in friends:
         ssName += friend[0]
     return "".join(sorted(ssName))
 
-
 # Examples
-print("exercise 2")
+print("exercise 3")
 print(societyName(['Adam', 'Sarah', 'Malcolm']))  # "AMS"
 
 print(societyName(['Harry', 'Newt', 'Luna', 'Cho']))  # "CHLN"
@@ -64,7 +61,7 @@ print(societyName(['Phoebe', 'Chandler', 'Rachel',
 # def sortByString(arr, str) = > arr.sort(([a], [b])= > str.indexOf(a) - str.indexOf(b))
 
 # 	Examples
-# print("exercise 3")
+print("exercise 4")
 
 # print(sortByString(['apple', 'banana', 'cherry', 'date'], 'dbca'))# ["date", "banana", "cherry", "apple"]
 
@@ -81,8 +78,10 @@ print(societyName(['Phoebe', 'Chandler', 'Rachel',
 # The elements must be exactly identical for there to be a jackpot.
 
 
-# def testJackpot(result):
-# print("exercise 4")
+# def testJackpot(result): return list(map(lambda wheel: wheel=True if wheel == result[0] else wheel=False, result))
+
+
+print("exercise 5")
 # 	Examples
 
 
@@ -106,7 +105,7 @@ print(societyName(['Phoebe', 'Chandler', 'Rachel',
 
 
 # Examples
-# print("exercise 5")
+print("exercise 6")
 # print(addUp(4))  # 10
 
 # print(addUp(13))  # 91
@@ -126,7 +125,7 @@ def divisibleByFive(n): return n % 5 == 0
 
 
 #     Examples
-print("exercise 6")
+print("exercise 7")
 print(divisibleByFive(5))  # true
 print(divisibleByFive(-55))  # true
 print(divisibleByFive(27))  # false
@@ -145,7 +144,7 @@ def lessThanOrEqualToZero(n): return n <= 0
 
 
 # Examples
-print("exercise 7")
+print("exercise 8")
 print(lessThanOrEqualToZero(5))  # false
 print(lessThanOrEqualToZero(0))  # true
 print(lessThanOrEqualToZero(-2))  # true
@@ -163,7 +162,7 @@ print(lessThanOrEqualToZero(1))  # false
 # def find_index(arr, str):
 
 #     Examples
-# print("exercise 8")
+print("exercise 9")
 # print(find_index([ 'hi', 'edabit', 'fgh', 'abc' ], 'fgh')); # 2
 # print(find_index([ 'Red', 'blue', 'Blue', 'Green' ], 'blue')); # 1
 # print(find_index([ 'a', 'g', 'y', 'd' ], 'd')); # 3
@@ -188,7 +187,7 @@ def amplify(num): return [x*10 if x % 4 == 0 else x for x in range(1, num+1)]
 
 
 #     Examples
-print("exercise 9 ")
+print("exercise 10")
 print(amplify(4))  # [1, 2, 3, 40]
 print(amplify(3))  # [1, 2, 3]
 # [1, 2, 3, 40, 5, 6, 7, 80, 9, 10, 11, 120, 13, 14, 15, 160, 17, 18, 19, 200, 21, 22, 23, 240, 25]
@@ -207,7 +206,7 @@ def hackerSpeak(txt): return txt.translate(str.maketrans('aeios', '43105'))
 
 
 #     Examples
-print("exercise 10")
+print("exercise 11")
 print(hackerSpeak('javascript is cool'))  # "j4v45cr1pt 15 c00l"
 print(hackerSpeak('programming is fun'))  # "pr0gr4mm1ng 15 fun"
 print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
@@ -243,7 +242,7 @@ print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
 # If no input is given it should return an empty array: [].
 
 #     Examples
-# print("exercise 11")
+print("exercise 12")
 # print(
 # 	flattenArray([
 # 		1,
@@ -275,7 +274,7 @@ print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
 # 	.split('')
 # 	.map((letter) => (letter === letter.toUpperCase() ? letter.toLowerCase() : letter.toUpperCase()))
 # 	.join('');
-# print("exercise 12")
+print("exercise 13")
 # print(reverseCase('Happy Birthday')); #  "hAPPY bIRTHDAY"
 
 # print(reverseCase('MANY THANKS')); #  "many thanks"
@@ -301,7 +300,7 @@ print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
 # 	return arr.filter((x) => x.length === lowest).sort();
 # };
 # 	Examples
-# print("exercise 13")
+print("exercise 14")
 # print(findShortestWords('The quick brown fox jumped over the lazy dogs back.')); # ["fox", "the", "the"]
 
 # print(findShortestWords('I think the solution is fairly obvious.')); # ["i"]
@@ -319,7 +318,7 @@ print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
 
 # Running the same number of miles as last week does not count as a progress day.
 # Examples
-# print("exercise 14")
+print("exercise 15")
 # def progressDays(runs) => runs.filter((e, i, a) => e < a[i + 1]).length;
 
 # print(progressDays([ 3, 4, 1, 2 ])); # 2
