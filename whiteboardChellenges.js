@@ -63,7 +63,8 @@ console.log(sortByString([ 'poof', 'floof', 'loop' ], 'flatp'));
 // Notes
 
 // The elements must be exactly identical for there to be a jackpot.
-const testJackpot = (result) => !result.map((wheel) => wheel === result[0]).includes(false);
+// const testJackpot = (result) => !result.map((wheel) => wheel === result[0]).includes(false);
+const testJackpot = (result) => result.every((wheel) => wheel === result[0]);
 // 	Examples
 
 console.log(testJackpot([ '@', '@', '@', '@' ])); // true
@@ -405,21 +406,7 @@ console.log(isSpecialArray([ 2, 7, 9, 1, 6, 1, 6, 3 ])); // false
 
 console.log(isSpecialArray([ 2, 7, 8, 8, 6, 1, 6, 3 ])); // false
 // Index 3 has an even number 8.
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Is the Number Symmetrical ?
 
-// 	Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not.A number is symmetrical when it is the same as its reverse.
-// 		Examples
-const isSymmetrical = (n) => n.toString() == n.toString().split('').reverse().join('');
-console.log(isSymmetrical(7227)); // true
-
-console.log(isSymmetrical(12567)); // false
-
-console.log(isSymmetrical(44444444)); // true
-
-console.log(isSymmetrical(9939)); // false
-
-console.log(isSymmetrical(1112111)); // true
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Spelling it Out
 
@@ -439,12 +426,13 @@ console.log(spelling('eagerly')); //["e", "ea", "eag", "eage", "eager", "eagerl"
 // Notes:
 // The input string can be include ASCII character.
 // Proper Number Format: (123)456-7890
-const formatPhone = (x) => x.replace(/[^\d]/g, '').replace(/(\d{3})(\d{3})(\d{4})/gi, '($1) $2-$3');
 
 console.log(formatPhone('hello Jim, My number is 1234567890 it is so cool I can reach in here pull that out.')); // (123) 456-7890
-console.log(formatPhone('hello Jim, My number is 321.654.4589 it is so cool I can reach in here pull that out.')); //(321) 654-4589
-console.log(formatPhone('hello Jim, My number is 143 454 7160 it is so cool I can reach in here pull that out.')); //(143) 454-7160
-console.log(formatPhone('hello Jim, My number is (1234(567890 it is so cool I can reach in here pull that out.')); // (123) 456-7890
+console.log(formatPhone('hello Jim, My number is 321.654.4589 it is so cool I can reach in here pull that out.')); // (321) 654-4589
+console.log(formatPhone('hello Jim, My number is 143 454 7160 it is so cool I can reach in here pull that out.')); // (143) 454-7160
+console.log(formatPhone('hello Jim, My number is 143x454x7160 it is so cool I can reach in here pull that out.')); // (143) 454-7160
+console.log(formatPhone('hello Jim, My number is (123)(456)(7890) it is so cool I can reach in here pull that out.')); // (123) 456-7890
+const formatPhone = (x) => x.replace(/[\D]/g, '').replace(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, '($1) $2-$3');
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // How Many Vowels ?
 
@@ -462,3 +450,214 @@ console.log(countVowels('Celebration')); //5
 console.log(countVowels('Palm')); //1
 
 console.log(countVowels('Prediction')); //4
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Check String for Spaces
+
+// Create a function that returns true if a string contains any spaces.
+// Notes
+
+// An empty string does not contain any spaces.
+// Try doing this without RegEx.
+// Don't forget to return the result.
+const hasSpaces = (str) => str.includes(' ');
+// // 	Examples
+
+console.log(hasSpaces('hello')); // false
+
+console.log(hasSpaces('hello, world')); // true
+
+console.log(hasSpaces(' ')); // true
+
+console.log(hasSpaces('')); // false
+
+console.log(hasSpaces(',./!@#')); // false
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Additive Inverse
+
+// A number added with its additive inverse equals zero.Create a function that returns an array of additive inverses.
+// Notes
+
+// Don't forget to return the result.
+const additiveInverse = (arr) => arr.map((num) => num * -1);
+// 	Examples
+
+console.log(additiveInverse([ 5, -7, 8, 3 ])); //[-5, 7, -8, -3]
+
+console.log(additiveInverse([ 1, 1, 1, 1, 1 ])); //[-1, -1, -1, -1, -1]
+
+console.log(additiveInverse([ -5, -25, 35 ])); //[5, 25, -35]
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Capture the Rook
+
+// Write a function that returns true if two rooks can attack each other, and false otherwise.
+// Notes
+
+// Assume no blocking pieces.
+// Two rooks can attack each other if they share the same row(letter)or column(number).
+// const canCapture = (arr) => arr[0].split('').includes(arr[1].split(''));
+// 	Examples
+
+// console.log(canCapture([ 'A8', 'E8' ])); // true
+
+// console.log(canCapture([ 'A1', 'B2' ])); // false
+
+// console.log(canCapture([ 'H4', 'H3' ])); // true
+
+// console.log(canCapture([ 'F5', 'C8' ])); // false
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Hurdle Jump
+
+// Create a function that takes an array of hurdle heights and a jumper's jump height, and determine whether or not the hurdler can clear all the hurdles.
+
+// A hurdler can clear a hurdle if their jump height is greater than or equal to the hurdle height.
+// Notes
+
+// Return true for the edge case of an empty array of hurdles. (Zero hurdles means that any jump height can clear them).
+hurdleJump = (a, h) => a.every((i) => i <= h);
+// 	Examples
+
+console.log(hurdleJump([ 1, 2, 3, 4, 5 ], 5)); // true
+
+console.log(hurdleJump([ 5, 5, 3, 4, 5 ], 3)); // false
+
+console.log(hurdleJump([ 5, 4, 5, 6 ], 10)); // true
+
+console.log(hurdleJump([ 1, 2, 1 ], 1)); // false
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Patterned Wristband
+
+// A wristband can have 4 patterns:
+
+// horizontal: each item in a row is identical.
+// 	vertical: each item in a column is identical.
+// diagonal left: each item is identical to the one on it's upper left or bottom right.
+// diagonal right: each item is identical to the one on it's upper right or bottom left.
+
+// You are shown an incomplete section of a wristband.
+
+// Write a function that returns true if the section can be correctly classified into one of the 4 types, and false otherwise.
+
+// Examples
+
+console.log(isWristband([ [ 'A', 'A' ], [ 'B', 'B' ], [ 'C', 'C' ] ])); // true
+// Part of horizontal wristband.
+
+console.log(isWristband([ [ 'A', 'B' ], [ 'A', 'B' ], [ 'A', 'B' ] ])); // true
+// Part of vertical wristband.
+
+console.log(isWristband([ [ 'A', 'B', 'C' ], [ 'C', 'A', 'B' ], [ 'B', 'C', 'A' ], [ 'A', 'B', 'C' ] ])); // true
+// Part of diagonal left wristband.
+
+console.log(isWristband([ [ 'A', 'B', 'C' ], [ 'B', 'C', 'A' ], [ 'C', 'A', 'B' ], [ 'A', 'B', 'A' ] ])); // true
+// Part of diagonal right wristband.
+const isWristband = (arr) =>
+	arr
+		.reduce(
+			([ h, v, d1, d2 ], row, y) => {
+				row.forEach((cell, x) => {
+					if (row[x + 1] && cell !== row[x + 1]) h = false;
+
+					if (arr[y + 1]) {
+						if (cell !== arr[y + 1][x]) v = false;
+						if (arr[y + 1][x + 1] && cell !== arr[y + 1][x + 1]) d1 = false;
+						if (arr[y + 1][x - 1] && cell !== arr[y + 1][x - 1]) d2 = false;
+					}
+				});
+
+				return [ h, v, d1, d2 ];
+			},
+			[ true, true, true, true ]
+		)
+		.some(Boolean);
+// !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Movie Theater Seating
+
+// A group of n friends are going to see a movie.They would like to find a spot where they can sit next to
+// each other in the same row.A movie theater's seat layout can be represented as a 2-D matrix, where 0s represent empty seats and 1s represent taken seats.
+
+// [[1, 0, 0, 0, 1, 1, 1],
+// [1, 1, 1, 0, 1, 1, 1],
+// [1, 0, 1, 0, 1, 0, 1],
+// [1, 1, 0, 1, 1, 0, 1],
+// [1, 0, 1, 1, 1, 1, 1],
+// [1, 0, 1, 1, 0, 0, 0]]
+
+// Create a function that, given a seat layout and the number of friends n, returns the number of available spots for all n friends to sit together.In the above example, if n = 3, there would be 2 spots(the first row and last row).
+// Multiple free arrangements that overlap still count as distinct arrangements(see example #2).
+
+const groupSeats = (arr, n) =>
+	arr
+		.map((v) => v.join(''))
+		.map((v) => (v.match(new RegExp(`0(?=0{${n - 1}})`, 'g')) || []).length)
+		.reduce((a, n) => a + n);
+
+// 	Examples
+
+console.log(
+	groupSeats(
+		[
+			[ 1, 0, 1, 0, 1, 0, 1 ], // Row 1
+			[ 0, 1, 0, 1, 0, 1, 0 ], // Row 2
+			[ 0, 0, 1, 1, 1, 1, 1 ], // Row 3
+			[ 1, 0, 1, 1, 0, 0, 1 ], // Row 4
+			[ 1, 1, 1, 0, 1, 0, 1 ], // Row 5
+			[ 0, 1, 1, 1, 1, 0, 0 ] // Row 6
+		],
+		2
+	)
+); // 3
+
+console.log(groupSeats([ [ 1, 0, 1, 0, 1, 0, 1 ] /* Row 1*/, [ 0, 1, 0, 0, 0, 0, 0 ] /* Row 2*/ ], 4)); // 2
+
+// Notes
+
+// Check Factors
+checkFactors = (a, f) => a.every((n) => f % n == 0);
+// Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
+// 	Examples
+
+console.log(checkFactors([ 2, 3, 4 ], 12)); // true
+// Since 2, 3, and 4 are all factors of 12.
+
+console.log(checkFactors([ 1, 2, 3, 8 ], 12)); // false
+// 8 is not a factor of 12.
+
+console.log(checkFactors([ 1, 2, 50 ], 100)); // true
+
+console.log(checkFactors([ 3, 6 ], 9)); // false
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Sum of Cubes
+
+// Create a function that takes in an array of numbers and returns the sum of its cubes.
+// Notes
+
+// If given an empty array, return 0.
+sumOfCubes = (arr) => arr.reduce((acc, t) => (acc += Math.pow(t, 3)), 0);
+
+// 	Examples
+
+console.log(sumOfCubes([ 1, 5, 9 ])); // 855
+// Since 1^3 + 5^3 + 9^3 = 1 + 125 + 729 = 855
+
+console.log(sumOfCubes([ 3, 4, 5 ])); // 216
+
+console.log(sumOfCubes([ 2 ])); // 8
+
+console.log(sumOfCubes([])); // 0
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Is the Number Symmetrical ?
+
+// 	Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not.A number is symmetrical when it is the same as its reverse.
+// 		Examples
+console.log(isSymmetrical(7227)); // true
+
+console.log(isSymmetrical(12567)); // false
+
+console.log(isSymmetrical(44444444)); // true
+
+console.log(isSymmetrical(9939)); // false
+
+console.log(isSymmetrical(1112111)); // true
+
+const isSymmetrical = (n) => n.toString() == n.toString().split('').reverse().join('');
