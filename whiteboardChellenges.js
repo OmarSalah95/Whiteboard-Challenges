@@ -423,6 +423,7 @@ console.log(spelling('eagerly')); //["e", "ea", "eag", "eage", "eager", "eagerl"
 // Find and Format the phone number.
 
 // Create a function which takes in a string of characters, and returns a cleaned and formatted phone number.
+const formatPhone = (x) => x.replace(/[\D]/g, '').replace(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, '($1) $2-$3');
 // Notes:
 // The input string can be include ASCII character.
 // Proper Number Format: (123)456-7890
@@ -432,7 +433,6 @@ console.log(formatPhone('hello Jim, My number is 321.654.4589 it is so cool I ca
 console.log(formatPhone('hello Jim, My number is 143 454 7160 it is so cool I can reach in here pull that out.')); // (143) 454-7160
 console.log(formatPhone('hello Jim, My number is 143x454x7160 it is so cool I can reach in here pull that out.')); // (143) 454-7160
 console.log(formatPhone('hello Jim, My number is (123)(456)(7890) it is so cool I can reach in here pull that out.')); // (123) 456-7890
-const formatPhone = (x) => x.replace(/[\D]/g, '').replace(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/, '($1) $2-$3');
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // How Many Vowels ?
 
@@ -537,6 +537,26 @@ console.log(hurdleJump([ 1, 2, 1 ], 1)); // false
 // You are shown an incomplete section of a wristband.
 
 // Write a function that returns true if the section can be correctly classified into one of the 4 types, and false otherwise.
+const isWristband = (arr) =>
+	arr
+		.reduce(
+			([ h, v, d1, d2 ], row, y) => {
+				row.forEach((cell, x) => {
+					if (row[x + 1] && cell !== row[x + 1]) h = false; // test for Horizontal Match
+
+					if (arr[y + 1]) {
+						// verify there is another following column to test.
+						if (cell !== arr[y + 1][x]) v = false; // Test is there is a Vertical match.
+						if (arr[y + 1][x + 1] && cell !== arr[y + 1][x + 1]) d1 = false; // Test for diagonal match to sliding right
+						if (arr[y + 1][x - 1] && cell !== arr[y + 1][x - 1]) d2 = false; // Test for diagonal match to sliding right
+					}
+				});
+
+				return [ h, v, d1, d2 ]; // return the results from testing in an array
+			},
+			[ true, true, true, true ] // Default array for reduce to start from.
+		)
+		.some(Boolean); // Test if some of the items in this array for (atleast 1) a true
 
 // Examples
 
@@ -551,25 +571,6 @@ console.log(isWristband([ [ 'A', 'B', 'C' ], [ 'C', 'A', 'B' ], [ 'B', 'C', 'A' 
 
 console.log(isWristband([ [ 'A', 'B', 'C' ], [ 'B', 'C', 'A' ], [ 'C', 'A', 'B' ], [ 'A', 'B', 'A' ] ])); // true
 // Part of diagonal right wristband.
-const isWristband = (arr) =>
-	arr
-		.reduce(
-			([ h, v, d1, d2 ], row, y) => {
-				row.forEach((cell, x) => {
-					if (row[x + 1] && cell !== row[x + 1]) h = false;
-
-					if (arr[y + 1]) {
-						if (cell !== arr[y + 1][x]) v = false;
-						if (arr[y + 1][x + 1] && cell !== arr[y + 1][x + 1]) d1 = false;
-						if (arr[y + 1][x - 1] && cell !== arr[y + 1][x - 1]) d2 = false;
-					}
-				});
-
-				return [ h, v, d1, d2 ];
-			},
-			[ true, true, true, true ]
-		)
-		.some(Boolean);
 // !~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Movie Theater Seating
 
@@ -612,20 +613,6 @@ console.log(groupSeats([ [ 1, 0, 1, 0, 1, 0, 1 ] /* Row 1*/, [ 0, 1, 0, 0, 0, 0,
 
 // Notes
 
-// Check Factors
-checkFactors = (a, f) => a.every((n) => f % n == 0);
-// Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
-// 	Examples
-
-console.log(checkFactors([ 2, 3, 4 ], 12)); // true
-// Since 2, 3, and 4 are all factors of 12.
-
-console.log(checkFactors([ 1, 2, 3, 8 ], 12)); // false
-// 8 is not a factor of 12.
-
-console.log(checkFactors([ 1, 2, 50 ], 100)); // true
-
-console.log(checkFactors([ 3, 6 ], 9)); // false
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Sum of Cubes
 
@@ -649,6 +636,7 @@ console.log(sumOfCubes([])); // 0
 // Is the Number Symmetrical ?
 
 // 	Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not.A number is symmetrical when it is the same as its reverse.
+const isSymmetrical = (n) => n == n.toString().split('').reverse().join('');
 // 		Examples
 console.log(isSymmetrical(7227)); // true
 
@@ -660,4 +648,46 @@ console.log(isSymmetrical(9939)); // false
 
 console.log(isSymmetrical(1112111)); // true
 
-const isSymmetrical = (n) => n.toString() == n.toString().split('').reverse().join('');
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Check Factors
+// Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
+checkFactors = (a, f) => a.every((n) => f % n == 0);
+// 	Examples
+
+console.log(checkFactors([ 2, 3, 4 ], 12)); // true
+// Since 2, 3, and 4 are all factors of 12.
+
+console.log(checkFactors([ 1, 2, 3, 8 ], 12)); // false
+// 8 is not a factor of 12.
+
+console.log(checkFactors([ 1, 2, 50 ], 100)); // true
+
+console.log(checkFactors([ 3, 6 ], 9)); // false
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Is it Time for Milk and Cookies ?
+
+// 	Christmas Eve is almost upon us, so naturally we need to prepare some milk and cookies for Santa! Create a function that accepts a Date object and returns true if it's Christmas Eve (December 24th) and false otherwise. Keep in mind JavaScript's Date month is 0 based, meaning December is the 11th month while January is 0.
+// Examples
+
+// timeForMilkAndCookies(new Date(2013, 11, 24)) ➞ true
+
+// timeForMilkAndCookies(new Date(2013, 0, 23)) ➞ false
+
+// timeForMilkAndCookies(new Date(3000, 11, 24)) ➞ true
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Reverse Words Starting With a Particular Letter
+
+// Write a function that reverses all the words in a sentence starting with a particular letter.
+specialReverse = (s, t) =>
+	s.split(' ').map((word) => (word.startsWith(t) ? word.split('').reverse().join('') : word)).join(' ');
+// 	Examples
+
+// Notes
+
+// Reverse the words themselves, not the entire sentence.
+// All characters in the sentence will be in lower case.
+console.log(specialReverse('word searches are super fun', 's')); // "word sehcraes are repus fun"
+
+console.log(specialReverse('first man to walk on the moon', 'm')); // "first nam to walk on the noom"
+
+console.log(specialReverse('peter piper picked pickled peppers', 'p')); // "retep repip dekcip delkcip sreppep"
