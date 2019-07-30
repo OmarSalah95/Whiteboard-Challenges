@@ -81,8 +81,8 @@ console.log(testJackpot([ 'SS', 'SS', 'SS', 'Ss' ])); // false
 // Add up the Numbers from a Single Number
 
 // Create a function that takes a number as an argument.Add up all the numbers from 1 to the number you passed to the function.For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
-const addUp = (num) => num * (num + 1) / 2;
 
+const addUp = (num) => num * (num + 1) / 2;
 // Examples
 console.log(addUp(4)); // 10
 
@@ -305,8 +305,8 @@ console.log(progressDays([ 9, 9 ])); // 0
 // Create a function that takes two strings as arguments and returns the number of times the first string is found in the second string.
 // Notes
 
-// Your output must be case -sensitive(see second example).
 const charCount = (myChar, str) => [ ...str ].filter((x) => x === myChar).length;
+// Your output must be case -sensitive(see second example).
 // 	Examples
 
 console.log(charCount('a', 'Omar')); // 1
@@ -537,6 +537,7 @@ console.log(hurdleJump([ 1, 2, 1 ], 1)); // false
 // You are shown an incomplete section of a wristband.
 
 // Write a function that returns true if the section can be correctly classified into one of the 4 types, and false otherwise.
+
 const isWristband = (arr) =>
 	arr
 		.reduce(
@@ -561,7 +562,7 @@ const isWristband = (arr) =>
 // Examples
 
 console.log(isWristband([ [ 'A', 'A' ], [ 'B', 'B' ], [ 'C', 'C' ] ])); // true
-// Part of horizontal wristband.
+// Part of horizontal wristband.3
 
 console.log(isWristband([ [ 'A', 'B' ], [ 'A', 'B' ], [ 'A', 'B' ] ])); // true
 // Part of vertical wristband.
@@ -691,3 +692,108 @@ console.log(specialReverse('word searches are super fun', 's')); // "word sehcra
 console.log(specialReverse('first man to walk on the moon', 'm')); // "first nam to walk on the noom"
 
 console.log(specialReverse('peter piper picked pickled peppers', 'p')); // "retep repip dekcip delkcip sreppep"
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Secret Society
+
+// A group of friends have decided to start a secret society.The name will be the first letter of each of their names, sorted in alphabetical order.
+
+// Create a function that takes in an array of names and returns the name of the secret society.
+// Notes
+const societyName = (arr) => arr.map((member) => member[0]).sort().join('').toUpperCase();
+// The secret society's name should be entirely uppercased.
+// 	Examples
+
+console.log(societyName([ 'Adam', 'Sarah', 'Malcolm' ])); // "AMS"
+
+// console.log(societyName([ 'Harry', 'Newt', 'Luna', 'Cho' ])); // "CHLN"
+
+// console.log(societyName([ 'Phoebe', 'Chandler', 'Rachel', 'Ross', 'Monica', 'Joey' ])); // "CJMPRR"
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// whiteboard problem:
+// Write a function that takes four string arguments. You will be comparing the first string to the three next strings. Verify if the first string starts with the second string, includes the third string, and ends with the fourth string. If the first string passes all checks, return the string "My head, body, and tail.", otherwise, return "Incomplete.".
+
+// Ex:
+// ```verifySubstrs("Onomatopeia", "on", "mato", "ia") ➞ "Incomplete."
+
+// verifySubstrs("Centipede", "Cent", "tip", "pede") ➞
+
+// verifySubstrs("apple", "AP", "PPL", "LE") ➞ "Incomplete."```
+
+// Edge cases:
+// -You'll always get exactly four strings as arguments.
+// -Tests are case sensitive.
+const verifySubstrs = (a, b, c, d) =>
+	a.startsWith(b) && str1.includes(c) && str1.endsWith(d) ? 'My head, body, and tail.' : 'Incomplete';
+
+console.log(verifySubstrs('Centipede', 'Cent', 'tip', 'pede')); // 'My head, body, and tail.'
+console.log(verifySubstrs('Onomatopeia', 'on', 'mato', 'ia')); // "Incomplete."
+console.log(verifySubstrs('apple', 'AP', 'PPL', 'LE')); // "Incomplete."
+
+// Calculate the Profit
+
+// You work for a manufacturer, and have been asked to calculate the total profit made on the sales of a product. You are given an object containing the cost price per unit (in dollars), sell price per unit (in dollars), and the starting inventory. Return the total profit made, rounded to the nearest dollar. Assume all of the inventory has been sold.
+// Examples
+// Notes
+const profit = (info) => Math.round(info.sellPrice * info.inventory - info.costPrice * info.inventory);
+// Profit = Total Sales - Total Cost
+
+console.log(
+	profit({
+		costPrice: 32.67,
+		sellPrice: 45.0,
+		inventory: 1200
+	})
+); // 14796
+
+console.log(
+	profit({
+		costPrice: 225.89,
+		sellPrice: 550.0,
+		inventory: 100
+	})
+); // 32411
+
+console.log(
+	profit({
+		costPrice: 2.77,
+		sellPrice: 7.95,
+		inventory: 8500
+	})
+); // 44030
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Sum of Cubes
+
+// Create a function that takes in an array of numbers and returns the sum of its cubes.
+// Notes
+
+// If given an empty array, return 0.
+
+// Examples
+
+console.log(sumOfCubes([ 1, 5, 9 ])); // 855
+// Since 1^3 + 5^3 + 9^3 = 1 + 125 + 729 = 855
+
+console.log(sumOfCubes([ 3, 4, 5 ])); // 216
+
+console.log(sumOfCubes([ 2 ])); // 8
+
+console.log(sumOfCubes([])); // 0
+const sumOfCubes = (arr) => arr.reduce((total, cv) => total + Math.pow(cv, 3), 0);
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Hashes and Pluses
+
+// Create a function that returns the number of hashes and pluses in a string.
+// It should return [0, 0] for an empty string
+const hashPlusCount = (str) =>
+	// 	Examples
+
+	console.log(hashPlusCount('###+')); //[3, 1]
+
+console.log(hashPlusCount('##+++#')); //[3, 3]
+
+console.log(hashPlusCount('#+++#+#++#')); //[4, 6]
+
+console.log(hashPlusCount('')); //[0, 0]
+str.split('').reduce(({ hash, plus }, cv) => (cv === '#' ? (hash += 1) : (plus += 1)), { hash: 0, plus: 0 });
