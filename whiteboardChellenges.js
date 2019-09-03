@@ -915,3 +915,83 @@ console.log(countOnes([[1, 2, 3], [0, 2, 1], [5, 7, 33]])); // 2
 // Notes
 
 // N/A
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Xs and Os, Nobody Knows
+
+// Create a function that takes a string, checks if it has the same number of x's and o's and returns either true or false.
+
+// Return a boolean value(true or false).
+// The string can contain any character.
+// When no x and no o are in the string, return true.
+
+const XO = str => str.replace(/[^x]/ig, '').length === str.replace(/[^o]/ig, '').length
+
+// Notes
+
+// Remember to return true if there aren't any x's or o's.
+// Must be case insensitive.
+//   Examples
+
+console.log(XO("ooxx")); // true
+
+console.log(XO("xooxx")); // false
+
+console.log(XO("ooxXm")); // true
+// Case insensitive.
+
+console.log(XO("zpzpzpp")); // true
+// Returns true if no x and o.
+
+console.log(XO("zzoo")); // false
+
+
+
+
+
+
+
+
+
+
+/*
+******************************************************************************
+|                          Do NOT run this code                              |
+|           until you have answered what you expect for each                 |
+|                of the answers to the questions below.                      |
+******************************************************************************
+*/
+
+let i;
+for(i=0; i<10; i++){}
+let x = i;
+// What is x?
+console.log({x})
+
+/* 
+  What does "11" + 1 return?
+  What does "11" - 1 return?
+*/
+console.log(`'11'+1 returns: ${"11"+1}`)
+console.log(`'11'+1 returns: ${"11"-1}`)
+
+/*
+  Given these conditions(In this Order) what will the boolean value returned be?:
+    1.  0=="0"
+    2.  0 ==[]
+    3. "0"==[]
+*/
+
+console.log(`0 == "0" returns: ${0 == "0"}`)
+console.log(`0 == [] returns: ${0 == []}`)
+console.log(`"0" == [] returns: ${"0" == []}`)
+
+/*
+******************************************************************************
+|                            Now that you have run                           |
+|          the code and can see how silly JS can be type the below           |
+|                 expressions in the console on the below                    |
+|                        (Submit with Enter/Return)                          |
+******************************************************************************
+*/ 
+// 1. {} = []
+// 2. [] + {}
