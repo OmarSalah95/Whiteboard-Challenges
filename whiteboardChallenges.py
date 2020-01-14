@@ -202,14 +202,14 @@ print(amplify(25))
 # In order to work properly, the function should replace all 'a's with 4, 'e's with 3, 'i's with 1, 'o's with 0, and 's's with 5.
 
 
-def hackerSpeak(txt): return txt.translate(str.maketrans('aeios', '43105'))
+# def hackerSpeak(txt): return txt.translate(str.maketrans('aeios', '43105'))
 
 
 #     Examples
-print("exercise 11")
-print(hackerSpeak('javascript is cool'))  # "j4v45cr1pt 15 c00l"
-print(hackerSpeak('programming is fun'))  # "pr0gr4mm1ng 15 fun"
-print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
+# print("exercise 11")
+# print(hackerSpeak('javascript is cool'))  # "j4v45cr1pt 15 c00l"
+# print(hackerSpeak('programming is fun'))  # "pr0gr4mm1ng 15 fun"
+# print(hackerSpeak('become a coder'))  # "b3c0m3 4 c0d3r"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Flatten an Array
@@ -329,3 +329,73 @@ print("exercise 15")
 # print(progressDays([ 6, 5, 4, 3, 2, 9 ])); # 1
 
 # print(progressDays([ 9, 9 ])); # 0
+
+
+
+
+
+
+"""Reverse a Single Linked List"""
+class Node:
+    def __init__(self, value, next=None):
+        self.value = value
+        self.next = next
+class SL:
+    def __init__(self,head=None):
+        self.head = head
+
+    def add(self, value):
+        current_next = Node(value)
+        current_next.next = self.head
+        self.head = current_next
+
+    def reverse(self):
+        current = self.head
+        prev = None
+        while current is not None:
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
+        self.head = prev
+        
+    def print_list(self):
+        temp = self.head
+        while temp:
+            print(temp.value)
+            temp = temp.next
+        
+        
+# sl = SL()
+# sl.add(1)
+# sl.add(2)
+# sl.add(3)
+# sl.add(4)
+# sl.add(5)
+
+# sl.print_list()
+# sl.reverse()
+# sl.print_list()
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+def shiftedBinarySearch(arr, target):
+    left = 0
+    right = len(arr) - 1
+    while(left <= right):
+        middle = left + (right - left) // 2
+        if arr[middle] == target:
+            return arr[middle], middle
+        elif arr[middle] >= arr[left]:
+            if target < arr[middle] and target >= arr[left]:
+                right = middle - 1
+            else:
+                left = middle+1
+        else:
+            if target > arr[middle] and target<= arr[right]:
+                left = middle + 1
+            else:
+                right = middle -1
+
+print("Shifted Binary Search: ", shiftedBinarySearch([7,8,9,10,11,12,13, 1,2,3,4,5,6,], 10))
+
