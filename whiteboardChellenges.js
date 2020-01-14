@@ -217,6 +217,8 @@ function flattenArray(arr) {
   return results;
 }
 
+const flattenArray = arr => arr.flat(Infinity);
+
 // If no input is given it should return an empty array: [].
 
 //     Examples
@@ -607,10 +609,22 @@ const isWristband = arr =>
 
 // Examples
 
-console.log(isWristband([["A", "A"], ["B", "B"], ["C", "C"]])); // true
+console.log(
+  isWristband([
+    ["A", "A"],
+    ["B", "B"],
+    ["C", "C"]
+  ])
+); // true
 // Part of horizontal wristband.3
 
-console.log(isWristband([["A", "B"], ["A", "B"], ["A", "B"]])); // true
+console.log(
+  isWristband([
+    ["A", "B"],
+    ["A", "B"],
+    ["A", "B"]
+  ])
+); // true
 // Part of vertical wristband.
 
 console.log(
@@ -672,7 +686,10 @@ console.log(
 
 console.log(
   groupSeats(
-    [[1, 0, 1, 0, 1, 0, 1] /* Row 1*/, [0, 1, 0, 0, 0, 0, 0] /* Row 2*/],
+    [
+      [1, 0, 1, 0, 1, 0, 1] /* Row 1*/,
+      [0, 1, 0, 0, 0, 0, 0] /* Row 2*/
+    ],
     4
   )
 ); // 2
@@ -906,11 +923,28 @@ const countOnes = matrix =>
 // .filter(x => x === "1").length;
 // Examples
 
-console.log(countOnes([[1, 0], [0, 0]])); // 1
+console.log(
+  countOnes([
+    [1, 0],
+    [0, 0]
+  ])
+); // 1
 
-console.log(countOnes([[1, 1, 1], [0, 0, 1], [1, 1, 1]])); // 7
+console.log(
+  countOnes([
+    [1, 1, 1],
+    [0, 0, 1],
+    [1, 1, 1]
+  ])
+); // 7
 
-console.log(countOnes([[1, 2, 3], [0, 2, 1], [5, 7, 33]])); // 2
+console.log(
+  countOnes([
+    [1, 2, 3],
+    [0, 2, 1],
+    [5, 7, 33]
+  ])
+); // 2
 
 // Notes
 
@@ -924,7 +958,8 @@ console.log(countOnes([[1, 2, 3], [0, 2, 1], [5, 7, 33]])); // 2
 // The string can contain any character.
 // When no x and no o are in the string, return true.
 
-const XO = str => str.replace(/[^x]/ig, '').length === str.replace(/[^o]/ig, '').length
+const XO = str =>
+  str.replace(/[^x]/gi, "").length === str.replace(/[^o]/gi, "").length;
 
 // Notes
 
@@ -944,15 +979,6 @@ console.log(XO("zpzpzpp")); // true
 
 console.log(XO("zzoo")); // false
 
-
-
-
-
-
-
-
-
-
 /*
 ******************************************************************************
 |                          Do NOT run this code                              |
@@ -962,17 +988,17 @@ console.log(XO("zzoo")); // false
 */
 
 let i;
-for(i=0; i<10; i++){}
+for (i = 0; i < 10; i++) {}
 let x = i;
 // What is x?
-console.log({x})
+console.log({ x });
 
 /* 
   What does "11" + 1 return?
   What does "11" - 1 return?
 */
-console.log(`'11'+1 returns: ${"11"+1}`)
-console.log(`'11'+1 returns: ${"11"-1}`)
+console.log(`'11'+1 returns: ${"11" + 1}`);
+console.log(`'11'+1 returns: ${"11" - 1}`);
 
 /*
   Given these conditions(In this Order) what will the boolean value returned be?:
@@ -981,9 +1007,9 @@ console.log(`'11'+1 returns: ${"11"-1}`)
     3. "0"==[]
 */
 
-console.log(`0 == "0" returns: ${0 == "0"}`)
-console.log(`0 == [] returns: ${0 == []}`)
-console.log(`"0" == [] returns: ${"0" == []}`)
+console.log(`0 == "0" returns: ${0 == "0"}`);
+console.log(`0 == [] returns: ${0 == []}`);
+console.log(`"0" == [] returns: ${"0" == []}`);
 
 /*
 ******************************************************************************
@@ -992,6 +1018,6 @@ console.log(`"0" == [] returns: ${"0" == []}`)
 |                 expressions in the console on the below                    |
 |                        (Submit with Enter/Return)                          |
 ******************************************************************************
-*/ 
+*/
 // 1. {} = []
 // 2. [] + {}
