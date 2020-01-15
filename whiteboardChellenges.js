@@ -1021,3 +1021,141 @@ console.log(`"0" == [] returns: ${"0" == []}`);
 */
 // 1. {} = []
 // 2. [] + {}
+
+/* * Complete the 'fibonacci' function below. * * The function is expected to return an INTEGER_ARRAY. * The function accepts INTEGER n as parameter. */
+
+function fibonacci(n) {
+  // Recursive Version
+  // Our time complexity will be O(n) for smaller numbers and O(2^n) if N>94
+  // O(1.6180)(Golden Ratio) no Memoization
+  // if (n < 2) {
+  //   return n;
+  // }
+  // return fibonacci(n - 1) + fibonacci(n - 2);
+
+  // This solution is more consistently performant as it uses Memoization and will consistently be O(n) in both Time and Space Complexity
+  if (n <= 1) {
+    return [0];
+  }
+  let ret = [0, 1];
+  for (let i = 2; i <= n - 2; i++) {
+    ret.push(ret[i] + ret[i - 1]);
+  }
+  return ret;
+}
+
+/* * Complete the 'balancedBrackets' function below. * * The function is expected to return a BOOLEAN. * The function accepts STRING string as parameter. */
+
+function balancedBrackets(string) {
+  if (string.length <= 1) return false;
+
+  let matchingOpeningBracket, char;
+  let stack = [];
+  let openingBrackets = ["[", "{", "(", "|"];
+  let closingBrackets = ["]", "}", ")", "|"];
+  // This being our only real loop, and having it only run the Length of N would make this algorith O(n)
+  for (let i = 0; i <= string.length; i++) {
+    char = string[i];
+
+    // Not a Bracket at all, move onto next char
+    if (!openingBrackets.includes(char) && !closingBrackets.includes(char)) {
+      continue;
+    }
+    // Our current Char is a Closing Bracket
+    // We need to store the Relevant opening bracket temporarily
+    if (closingBrackets.indexOf(char) > -1) {
+      matchingOpeningBracket = openingBrackets[closingBrackets.indexOf(char)];
+      if (stack.length == 0 || stack.pop() != matchingOpeningBracket) {
+        return false;
+      }
+    } else {
+      // We found an opening bracket and thus we add it to the end of stack for matching
+      stack.push(char);
+    }
+  }
+  return stack.length == 0;
+}
+
+/* * Complete the 'removeKthLinkedListNode' function below.
+ * * The function is expected to return an INTEGER_SINGLY_LINKED_LIST.
+ * The function accepts following parameters:
+ *  1. INTEGER_SINGLY_LINKED_LIST head
+ *  2. INTEGER k */
+
+/* * For your reference:
+ * * SinglyLinkedListNode {
+ *     int data;
+ * *     SinglyLinkedListNode next;
+ * * }
+ * * */
+
+function removeKthLinkedListNode(head, k) {
+  // Since we are removing from the end of our list I can think of no other way of Generating a counter other than iterating over our LL
+  // Twice 1 so that I can generate a length to subtract K from(This will give me a Index to target) before needing to iterate over it once
+  // Again to bypass the node we are looking to remove. This means our complexity will be O(2n) in both time and space as I store a dummy (or temp)
+  // Used to create our LL copy with the node removed.
+
+  let counter = 0;
+  let p1 = head;
+  let dummy = { data: 0, next: head };
+  // First We need to count the total Nodes in the List So that we can accurately find the target node to remove
+  while (p1) {
+    counter += 1;
+    p1 = p1.next;
+  }
+  // Before Attempting to remove the Kth element we test to make sure that element is is even included in the linked list before
+  if (k > counter) {
+    return head;
+  }
+  // Find the target Address of the node to be removed
+  let target = counter - k;
+  p1 = dummy;
+  // Traverse to the Node that is to be removed and stop
+  while (target > 0) {
+    target--;
+    p1 = p1.next;
+  }
+  // Then Bypass the Node to be removed
+  p1.next = p1.next.next;
+  // Return the New reference List passed the Template Node data we hard coded at the start of the function.
+  return dummy.next;
+}
+
+/* * Complete the 'threeNumberSum' function below.
+ * * The function is expected to return a 2D_INTEGER_ARRAY.
+ * The function accepts following parameters:
+ *  1. INTEGER_ARRAY arr
+ *  2. INTEGER target */
+
+function threeNumberSum(arr, target) {
+  // The time complexity here will be O(n log n).
+  let ret = [];
+  let l, r;
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length - 2; i++) {
+    l = i + 1;
+    r = arr.length - 1;
+    while (l < r) {
+      if (arr[i] + arr[l] + arr[r] == target) {
+        ret.push([arr[i], arr[l], arr[r]]);
+        r--;
+        l++;
+      } else if (arr[i] + arr[l] + arr[r] < target) {
+        l += 1;
+      } else {
+        r -= 1;
+      }
+    }
+  }
+  return ret;
+  //     for(let i = 0; i< arr.length - 2; i++) {
+  //         for(let j = i+1; j< arr.length-1; j++){
+  //             for(let k = j+1; j<arr.length; k++){
+  //                 if (arr[i] + arr[j] + arr[k] == target){
+  //                     ret.push([arr[i], arr[j], arr[k]])
+  //                 }
+  //             }
+  //         }
+  //     }
+  //   return ret
+}
