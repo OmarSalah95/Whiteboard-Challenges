@@ -1,7 +1,7 @@
 // Reverse an Array
 
 // Write a function to reverse an array.
-const reverse = arr => arr.reverse();
+const reverse = (arr) => arr.reverse();
 // Examples
 console.log(reverse([1, 2, 3, 4])); // [4, 3, 2, 1]
 
@@ -13,7 +13,7 @@ console.log(reverse([])); // []
 
 // Create a function that adds a string ending to each member in an array.
 
-const addEnding = (wordsArr, suffix) => wordsArr.map(word => word + suffix);
+const addEnding = (wordsArr, suffix) => wordsArr.map((word) => word + suffix);
 
 //   Examples
 console.log(addEnding(["clever", "meek", "hurried", "nice"], "ly")); //["cleverly", "meekly", "hurriedly", "nicely"]
@@ -27,9 +27,9 @@ console.log(addEnding(["bend", "sharpen", "mean"], "ing")); //["bending", "sharp
 // Create a function that takes in an array of names and returns the name of the secret society.
 // Notes
 
-const societyName = friends =>
+const societyName = (friends) =>
   friends
-    .map(friend => friend[0])
+    .map((friend) => friend[0])
     .sort()
     .join("");
 // The secret society's name should be entirely uppercased.
@@ -69,7 +69,7 @@ console.log(sortByString(["poof", "floof", "loop"], "flatp"));
 // Create a function that takes in an array(slot machine outcome) and returns true if all elements in the array are identical, and false otherwise.The array will contain 4 elements.
 // Notes
 
-const testJackpot = result => result.every(wheel => wheel === result[0]);
+const testJackpot = (result) => result.every((wheel) => wheel === result[0]);
 // The elements must be exactly identical for there to be a jackpot.
 // const testJackpot = (result) => !result.map((wheel) => wheel === result[0]).includes(false);
 // 	Examples
@@ -89,7 +89,7 @@ console.log(testJackpot(["SS", "SS", "SS", "Ss"])); // false
 
 // Create a function that takes a number as an argument.Add up all the numbers from 1 to the number you passed to the function.For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
 
-const addUp = num => (num * (num + 1)) / 2;
+const addUp = (num) => (num * (num + 1)) / 2;
 // Examples
 console.log(addUp(4)); // 10
 
@@ -104,7 +104,7 @@ console.log(addUp(600)); // 180300
 // Notes
 
 // Don't forget to return the result.
-const divisibleByFive = n => n % 5 === 0;
+const divisibleByFive = (n) => n % 5 === 0;
 
 //     Examples
 console.log(divisibleByFive(5)); // true
@@ -119,7 +119,7 @@ console.log(divisibleByFive(27)); // false
 
 // Don't forget to return the result.
 // You can expect a valid number for every test case.
-const lessThanOrEqualToZero = n => n <= 0;
+const lessThanOrEqualToZero = (n) => n <= 0;
 
 // Examples
 console.log(lessThanOrEqualToZero(5)); // false
@@ -158,9 +158,9 @@ console.log(find_index(["Pineapple", "Orange", "Grape", "Apple"], "Pineapple"));
 
 // The given integer will always be equal to or greater than 1.
 // Include the number(see example above).
-const amplify = num => {
+const amplify = (num) => {
   const result = [];
-  for (i = 1; i <= num; i++) {
+  for (let i = 1; i <= num; i++) {
     result.push(i % 4 === 0 ? i * 10 : i);
   }
   return result;
@@ -178,9 +178,9 @@ console.log(amplify(25)); // [1, 2, 3, 40, 5, 6, 7, 80, 9, 10, 11, 120, 13, 14, 
 // Notes
 
 // In order to work properly, the function should replace all 'a's with 4, 'e's with 3, 'i's with 1, 'o's with 0, and 's's with 5.
-const hackerSpeak = str => {
+const hackerSpeak = (str) => {
   const chars = { a: "4", e: "3", i: "1", o: "0", s: "5" };
-  return (str = str.replace(/[aeios]/gi, letter => chars[letter]));
+  return (str = str.replace(/[aeios]/gi, (letter) => chars[letter]));
 };
 
 //     Examples
@@ -203,7 +203,7 @@ function flattenArray(arr) {
   if (arr === undefined) {
     return results;
   }
-  arr.forEach(function(e) {
+  arr.forEach(function (e) {
     if (Array.isArray(e)) {
       results = results.concat(flattenArray(e));
     } else {
@@ -217,7 +217,7 @@ function flattenArray(arr) {
   return results;
 }
 
-const flattenArray = arr => arr.flat(Infinity);
+// const flattenArray = arr => arr.flat(Infinity);
 
 // If no input is given it should return an empty array: [].
 
@@ -228,14 +228,14 @@ console.log(
     "2",
     [
       3,
-      function() {
+      function () {
         return 4;
       },
       ["five"],
       "six",
       true,
-      { prop: "val" }
-    ]
+      { prop: "val" },
+    ],
   ])
 ); // [1, "2", 3, 4, "five", "six", true, { prop: "val" }]
 console.log(flattenArray([1, 2, [3, [4, 5], 6], 7, 8])); // [1, 2, 3, 4, 5, 6, 7, 8]
@@ -247,8 +247,8 @@ console.log(flattenArray()); // []
 
 // Given a string, create a function to reverse the case.All lower - cased letters should be upper - cased, and vice versa.
 // 	Examples
-const reverseCase = str =>
-  str.replace(/[^\.]/g, letter =>
+const reverseCase = (str) =>
+  str.replace(/[^\.]/g, (letter) =>
     letter === letter.toUpperCase()
       ? letter.toLowerCase()
       : letter.toUpperCase()
@@ -277,13 +277,13 @@ console.log(reverseCase("sPoNtAnEoUs")); //  "SpOnTaNeOuS"
 // Notes
 
 // Remember to sort the array of words alphabetically before returning your result.
-const findShortestWords = str => {
+const findShortestWords = (str) => {
   let arr = str
     .toLowerCase()
     .replace(/[^a-z\s]/g, "")
     .split(/\s+/);
-  let lowest = Math.min(...arr.map(x => x.length));
-  return arr.filter(x => x.length === lowest).sort();
+  let lowest = Math.min(...arr.map((x) => x.length));
+  return arr.filter((x) => x.length === lowest).sort();
 };
 // 	Examples
 
@@ -305,7 +305,7 @@ console.log(findShortestWords("We become what we think about.")); // ["we", "we"
 // Notes
 
 // Running the same number of miles as last week does not count as a progress day.
-const progressDays = runs => runs.filter((e, i, a) => e < a[i + 1]).length;
+const progressDays = (runs) => runs.filter((e, i, a) => e < a[i + 1]).length;
 // Examples
 
 console.log(progressDays([3, 4, 1, 2])); // 2
@@ -323,7 +323,7 @@ console.log(progressDays([9, 9])); // 0
 // Create a function that takes two strings as arguments and returns the number of times the first string is found in the second string.
 // Notes
 
-const charCount = (myChar, str) => [...str].filter(x => x === myChar).length;
+const charCount = (myChar, str) => [...str].filter((x) => x === myChar).length;
 // Your output must be case -sensitive(see second example).
 // 	Examples
 
@@ -376,7 +376,7 @@ console.log(replaceVowels("shakespeare", "*")); // "sh*k*sp**r*"
 // Expect negative integers(whole numbers).
 // Tests are case sensitive(return "even" or "odd" in lowercase).
 // 		Examples
-const isEvenOrOdd = n => (n % 2 == 0 ? "even" : "odd");
+const isEvenOrOdd = (n) => (n % 2 == 0 ? "even" : "odd");
 
 console.log(isEvenOrOdd(3)); // "odd"
 
@@ -387,7 +387,7 @@ console.log(isEvenOrOdd(19)); // "odd"
 // Frequency Distribution
 
 // // Create a function that returns the frequency distribution of an array.This function should return an object, where the keys are the unique elements and the values are the frequency in which those elements occur.
-const getFrequencies = arr =>
+const getFrequencies = (arr) =>
   arr.reduce(
     (ret, item) =>
       Object.assign(ret, ret[item] ? ret[item]++ : (ret[item] = 1)),
@@ -412,7 +412,7 @@ console.log(getFrequencies([])); // { }
 
 // If given an empty array, return an empty object(see example #4).
 // The object should be in the same order as in the input array.
-isSpecialArray = arr =>
+isSpecialArray = (arr) =>
   arr
     .map((number, index) =>
       number % 2 == 0 && index % 2 == 0
@@ -436,7 +436,7 @@ console.log(isSpecialArray([2, 7, 8, 8, 6, 1, 6, 3])); // false
 // Spelling it Out
 
 // Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.
-const spelling = str => str.split("").map((c, i) => str.slice(0, i + 1));
+const spelling = (str) => str.split("").map((c, i) => str.slice(0, i + 1));
 // 	Examples
 
 console.log(spelling("bee")); //["b", "be", "bee"]
@@ -448,7 +448,7 @@ console.log(spelling("eagerly")); //["e", "ea", "eag", "eage", "eager", "eagerl"
 // Find and Format the phone number.
 
 // Create a function which takes in a string of characters, and returns a cleaned and formatted phone number.
-const formatPhone = x =>
+const formatPhone = (x) =>
   x
     .replace(/[\D]/g, "")
     .replace(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/g, "($1) $2-$3");
@@ -489,7 +489,7 @@ console.log(
 
 // a, e, i, o, u are considered vowles(not y).
 // All test cases are one word and only contain letters.
-const countVowels = str => str.match(/[aeiou]/gi).length;
+const countVowels = (str) => str.match(/[aeiou]/gi).length;
 // const countVowels = (str) => str.split('').filter((letter) => /[aeiou]/gi.test(letter)).length;
 // 		Examples
 
@@ -507,7 +507,7 @@ console.log(countVowels("Prediction")); //4
 // An empty string does not contain any spaces.
 // Try doing this without RegEx.
 // Don't forget to return the result.
-const hasSpaces = str => str.includes(" ");
+const hasSpaces = (str) => str.includes(" ");
 // // 	Examples
 
 console.log(hasSpaces("hello")); // false
@@ -526,7 +526,7 @@ console.log(hasSpaces(",./!@#")); // false
 // Notes
 
 // Don't forget to return the result.
-const additiveInverse = arr => arr.map(num => num * -1);
+const additiveInverse = (arr) => arr.map((num) => num * -1);
 // 	Examples
 
 console.log(additiveInverse([5, -7, 8, 3])); //[-5, 7, -8, -3]
@@ -561,7 +561,7 @@ console.log(additiveInverse([-5, -25, 35])); //[5, 25, -35]
 // Notes
 
 // Return true for the edge case of an empty array of hurdles. (Zero hurdles means that any jump height can clear them).
-hurdleJump = (a, h) => a.every(i => i <= h);
+hurdleJump = (a, h) => a.every((i) => i <= h);
 // 	Examples
 
 console.log(hurdleJump([1, 2, 3, 4, 5], 5)); // true
@@ -586,7 +586,7 @@ console.log(hurdleJump([1, 2, 1], 1)); // false
 
 // Write a function that returns true if the section can be correctly classified into one of the 4 types, and false otherwise.
 
-const isWristband = arr =>
+const isWristband = (arr) =>
   arr
     .reduce(
       ([h, v, d1, d2], row, y) => {
@@ -613,7 +613,7 @@ console.log(
   isWristband([
     ["A", "A"],
     ["B", "B"],
-    ["C", "C"]
+    ["C", "C"],
   ])
 ); // true
 // Part of horizontal wristband.3
@@ -622,7 +622,7 @@ console.log(
   isWristband([
     ["A", "B"],
     ["A", "B"],
-    ["A", "B"]
+    ["A", "B"],
   ])
 ); // true
 // Part of vertical wristband.
@@ -632,7 +632,7 @@ console.log(
     ["A", "B", "C"],
     ["C", "A", "B"],
     ["B", "C", "A"],
-    ["A", "B", "C"]
+    ["A", "B", "C"],
   ])
 ); // true
 // Part of diagonal left wristband.
@@ -642,7 +642,7 @@ console.log(
     ["A", "B", "C"],
     ["B", "C", "A"],
     ["C", "A", "B"],
-    ["A", "B", "A"]
+    ["A", "B", "A"],
   ])
 ); // true
 // Part of diagonal right wristband.
@@ -664,8 +664,8 @@ console.log(
 
 const groupSeats = (arr, n) =>
   arr
-    .map(v => v.join(""))
-    .map(v => (v.match(new RegExp(`0(?=0{${n - 1}})`, "g")) || []).length)
+    .map((v) => v.join(""))
+    .map((v) => (v.match(new RegExp(`0(?=0{${n - 1}})`, "g")) || []).length)
     .reduce((a, n) => a + n);
 
 // 	Examples
@@ -678,7 +678,7 @@ console.log(
       [0, 0, 1, 1, 1, 1, 1], // Row 3
       [1, 0, 1, 1, 0, 0, 1], // Row 4
       [1, 1, 1, 0, 1, 0, 1], // Row 5
-      [0, 1, 1, 1, 1, 0, 0] // Row 6
+      [0, 1, 1, 1, 1, 0, 0], // Row 6
     ],
     2
   )
@@ -688,7 +688,7 @@ console.log(
   groupSeats(
     [
       [1, 0, 1, 0, 1, 0, 1] /* Row 1*/,
-      [0, 1, 0, 0, 0, 0, 0] /* Row 2*/
+      [0, 1, 0, 0, 0, 0, 0] /* Row 2*/,
     ],
     4
   )
@@ -703,7 +703,7 @@ console.log(
 // Notes
 
 // If given an empty array, return 0.
-const sumOfCubes = arr => arr.reduce((acc, t) => (acc += Math.pow(t, 3)), 0);
+const sumOfCubes = (arr) => arr.reduce((acc, t) => (acc += Math.pow(t, 3)), 0);
 
 // 	Examples
 
@@ -719,13 +719,7 @@ console.log(sumOfCubes([])); // 0
 // Is the Number Symmetrical ?
 
 // 	Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not.A number is symmetrical when it is the same as its reverse.
-const isSymmetrical = n =>
-  n ==
-  n
-    .toString()
-    .split("")
-    .reverse()
-    .join("");
+const isSymmetrical = (n) => n == n.toString().split("").reverse().join("");
 // 		Examples
 console.log(isSymmetrical(7227)); // true
 
@@ -741,7 +735,7 @@ console.log(isSymmetrical(1112111)); // true
 // Check Factors
 // Write a function that returns true if all integers in an array are factors of a number, and false otherwise.
 // 	Examples
-const checkFactors = (a, f) => a.every(n => f % n == 0);
+const checkFactors = (a, f) => a.every((n) => f % n == 0);
 
 console.log(checkFactors([2, 3, 4], 12)); // true
 // Since 2, 3, and 4 are all factors of 12.
@@ -773,23 +767,20 @@ console.log(checkFactors([3, 6], 9)); // false
 
 // Reverse the words themselves, not the entire sentence.
 // All characters in the sentence will be in lower case.
+
+const specialReverse = (s, t) =>
+  s
+    .split(" ")
+    .map((word) =>
+      word.startsWith(t) ? word.split("").reverse().join("") : word
+    )
+    .join(" ");
+
 console.log(specialReverse("word searches are super fun", "s")); // "word sehcraes are repus fun"
 
 console.log(specialReverse("first man to walk on the moon", "m")); // "first nam to walk on the noom"
 
 console.log(specialReverse("peter piper picked pickled peppers", "p")); // "retep repip dekcip delkcip sreppep"
-const specialReverse = (s, t) =>
-  s
-    .split(" ")
-    .map(word =>
-      word.startsWith(t)
-        ? word
-            .split("")
-            .reverse()
-            .join("")
-        : word
-    )
-    .join(" ");
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -828,7 +819,7 @@ console.log(
   profit({
     costPrice: 32.67,
     sellPrice: 45.0,
-    inventory: 1200
+    inventory: 1200,
   })
 ); // 14796
 
@@ -836,7 +827,7 @@ console.log(
   profit({
     costPrice: 225.89,
     sellPrice: 550.0,
-    inventory: 100
+    inventory: 100,
   })
 ); // 32411
 
@@ -844,7 +835,7 @@ console.log(
   profit({
     costPrice: 2.77,
     sellPrice: 7.95,
-    inventory: 8500
+    inventory: 8500,
   })
 ); // 44030
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -865,18 +856,19 @@ console.log(sumOfCubes([3, 4, 5])); // 216
 console.log(sumOfCubes([2])); // 8
 
 console.log(sumOfCubes([])); // 0
-const sumOfCubes = arr => arr.reduce((total, cv) => total + Math.pow(cv, 3), 0);
+// const sumOfCubes = (arr) =>
+//   arr.reduce((total, cv) => total + Math.pow(cv, 3), 0);
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Hashes and Pluses
 
 // Create a function that returns the number of hashes and pluses in a string.
 // It should return [0, 0] for an empty string
-const hashPlusCount = str =>
+const hashPlusCount = (str) =>
   str
     .split("")
     .reduce(({ hash, plus }, cv) => (cv === "#" ? (hash += 1) : (plus += 1)), {
       hash: 0,
-      plus: 0
+      plus: 0,
     });
 // 	Examples
 
@@ -896,11 +888,11 @@ console.log(hashPlusCount("")); //[0, 0]
 // If you can't find Nemo, return "I can't find Nemo :(".
 // Examples
 
-console.log(findNemo("I am finding Nemo !")); //  "I found Nemo at 4!"
+// console.log(findNemo("I am finding Nemo !")); //  "I found Nemo at 4!"
 
-console.log(findNemo("Nemo is me")); // "I found Nemo at 1!"
+// console.log(findNemo("Nemo is me")); // "I found Nemo at 1!"
 
-console.log(findNemo("I Nemo am")); // "I found Nemo at 2!"
+// console.log(findNemo("I Nemo am")); // "I found Nemo at 2!"
 
 // Notes
 
@@ -913,7 +905,7 @@ console.log(findNemo("I Nemo am")); // "I found Nemo at 2!"
 // Count Ones in a 2D Array
 
 // Create a function to count the number of 1s in a 2D array.
-const countOnes = matrix =>
+const countOnes = (matrix) =>
   matrix
     .toString()
     .split(",")
@@ -926,7 +918,7 @@ const countOnes = matrix =>
 console.log(
   countOnes([
     [1, 0],
-    [0, 0]
+    [0, 0],
   ])
 ); // 1
 
@@ -934,7 +926,7 @@ console.log(
   countOnes([
     [1, 1, 1],
     [0, 0, 1],
-    [1, 1, 1]
+    [1, 1, 1],
   ])
 ); // 7
 
@@ -942,7 +934,7 @@ console.log(
   countOnes([
     [1, 2, 3],
     [0, 2, 1],
-    [5, 7, 33]
+    [5, 7, 33],
   ])
 ); // 2
 
@@ -958,7 +950,7 @@ console.log(
 // The string can contain any character.
 // When no x and no o are in the string, return true.
 
-const XO = str =>
+const XO = (str) =>
   str.replace(/[^x]/gi, "").length === str.replace(/[^o]/gi, "").length;
 
 // Notes
@@ -1022,7 +1014,10 @@ console.log(`"0" == [] returns: ${"0" == []}`);
 // 1. {} = []
 // 2. [] + {}
 
-/* * Complete the 'fibonacci' function below. * * The function is expected to return an INTEGER_ARRAY. * The function accepts INTEGER n as parameter. */
+/* * Complete the 'fibonacci' function below.
+ * * The function is expected to return an INTEGER_ARRAY.
+ * The function accepts INTEGER n as parameter.
+ */
 
 function fibonacci(n) {
   // Recursive Version
@@ -1034,9 +1029,7 @@ function fibonacci(n) {
   // return fibonacci(n - 1) + fibonacci(n - 2);
 
   // This solution is more consistently performant as it uses Memoization and will consistently be O(n) in both Time and Space Complexity
-  if (n <= 1) {
-    return [0];
-  }
+  // This is also why I decided to go bottom up on this particular challenge as it is cleaner and more efficient
   let ret = [0, 1];
   for (let i = 2; i <= n - 2; i++) {
     ret.push(ret[i] + ret[i - 1]);
@@ -1044,15 +1037,20 @@ function fibonacci(n) {
   return ret;
 }
 
-/* * Complete the 'balancedBrackets' function below. * * The function is expected to return a BOOLEAN. * The function accepts STRING string as parameter. */
+/* * Complete the 'balancedBrackets' function below.
+ * * The function is expected to return a BOOLEAN.
+ * The function accepts STRING string as parameter.
+ */
 
 function balancedBrackets(string) {
+  // Closing and Opening pipes are not being distinguished an probably what is causing that test case failure.
   if (string.length <= 1) return false;
 
   let matchingOpeningBracket, char;
   let stack = [];
   let openingBrackets = ["[", "{", "(", "|"];
   let closingBrackets = ["]", "}", ")", "|"];
+
   // This being our only real loop, and having it only run the Length of N would make this algorith O(n)
   for (let i = 0; i <= string.length; i++) {
     char = string[i];
@@ -1095,6 +1093,11 @@ function removeKthLinkedListNode(head, k) {
   // Again to bypass the node we are looking to remove. This means our complexity will be O(2n) in both time and space as I store a dummy (or temp)
   // Used to create our LL copy with the node removed.
 
+  // A Second approach would be to Set 2 pointers one indicating the head and fishing for the end of the LL the second being K distance behind that p1
+  // This will effectively leave a window trailing behind one and allowing us to run 1 pass and improve time complexity to O(n)
+
+  let tip = head;
+
   let counter = 0;
   let p1 = head;
   let dummy = { data: 0, next: head };
@@ -1125,10 +1128,12 @@ function removeKthLinkedListNode(head, k) {
  * * The function is expected to return a 2D_INTEGER_ARRAY.
  * The function accepts following parameters:
  *  1. INTEGER_ARRAY arr
- *  2. INTEGER target */
+ *  2. INTEGER target
+ * */
 
 function threeNumberSum(arr, target) {
-  // The time complexity here will be O(n log n).
+  // The time complexity here will be O(n log n).?? THis is less than accurate? Considering worst case we still iterate over
+  // all items in the sub-array. It should be O(n^2)
   let ret = [];
   let l, r;
   arr.sort((a, b) => a - b);
